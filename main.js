@@ -53,11 +53,16 @@ for (let i = 0; i < array.length; i += 3) {
   array[i + 2] = z + Math.random();
 }
 
-const light = new THREE.DirectionalLight(0xffffff, 1);
+// Primary Light Sources Ambient lighting comes from all directions, while directional and positional lighting come from one source
+
+const light = new THREE.AmbientLight(0xffffff);
+light.intensity = 10;
 light.position.set(0, 0, 1);
 scene.add(light);
 
-const backLight = new THREE.DirectionalLight(0xffffff, 1);
+// const backLight = new THREE.DirectionalLight(0xffffff, 2);
+const backLight = new THREE.AmbientLight(0xffffff); // soft white light (0x404040)
+backLight.intensity = 2;
 backLight.position.set(0, 0, -1);
 scene.add(backLight);
 
