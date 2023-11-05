@@ -2,12 +2,30 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import * as dat from "dat.gui";
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
+const width = window.innerWidth;
+const height = window.innerHeight;
+// const camera = new THREE.PerspectiveCamera(
+//   75,
+//   window.innerWidth / window.innerHeight,
+//   0.1,
+//   1000
+// );
+// In the perspective view (the default), objects which are far away are smaller than those nearby. In the orthographic view, all objects appear at the same scale.
+
+const camera = new THREE.OrthographicCamera(
+  width / -100,
+  width / 100,
+  height / 100,
+  height / -100,
+  1,
   1000
 );
+
+// const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(128, {
+//   generateMipmaps: true,
+//   minFilter: THREE.LinearMipmapLinearFilter,
+// });
+// const camera = new THREE.CubeCamera(1, 100000, cubeRenderTarget);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
